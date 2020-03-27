@@ -1,0 +1,9 @@
+node_modules
+dist
+/.jest-cache
+/test-results
+
+/es
+/index.*
+
+one*tgz

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`runtime consistently exports 1`] = `
+"isDevelopment :: function
+isEventsEnabled :: function
+isNonStandardEnabled :: function
+isNavigationPreloadEnabled :: function
+isServiceWorker :: function
+isServiceWorkerSupported :: function
+isNotificationSupported :: function
+isPushSupported :: function
+isBackgroundSyncSupported :: function
+isCacheStorageSupported :: function
+isIndexedDBSupported :: function
+isPermissionsSupported :: function
+isOffline :: function
+configure :: function
+getConfig :: function"
+`;

@@ -1,0 +1,17 @@
+{
+  "name": "One Service Worker",
+  "short_name": "One Service Worker",
+  "description": "One Service Worker Demo",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#006FCF",
+  "theme_color": "#006FCF",
+  "icons": [
+    {
+      "src": "/images/one.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

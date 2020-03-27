@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cache consistently exports 1`] = `
+"defaultCacheName :: string
+defaultCacheOptions :: object
+normalizeRequest :: function
+open :: function
+has :: function
+keys :: function
+match :: function
+matchAll :: function
+add :: function
+addAll :: function
+put :: function
+remove :: function
+removeAll :: function
+entries :: function
+clear :: function
+metaDataCacheName :: string
+createCacheName :: function
+createCacheEntryName :: function
+createMetaRequest :: function
+createMetaResponse :: function
+getMetaStore :: function
+getMetaData :: function
+setMetaData :: function
+deleteMetaData :: function"
+`;

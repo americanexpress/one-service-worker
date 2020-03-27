@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`events consistently exports 1`] = `
+"on :: function
+off :: function
+once :: function
+emit :: function
+emitter :: function
+eventListeners :: object
+calls :: object
+createMiddleware :: function
+createMiddlewareContext :: function
+createMiddlewareFactory :: function"
+`;

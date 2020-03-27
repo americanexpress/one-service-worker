@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getNotifications getNotifications calls registration.getNotifications 1`] = `
+Array [
+  Notification {
+    "close": [Function],
+    "title": "new notification",
+    "vibrate": Array [
+      100,
+      200,
+    ],
+  },
+]
+`;
+
+exports[`getSubscription getSubscription calls registration.pushManager.getSubscription 1`] = `
+Object {
+  "endpoint": "test.com/12345",
+  "options": Object {
+    "applicationServerKey": Uint8Array [],
+    "userVisibleOnly": true,
+  },
+}
+`;
+
+exports[`subscribe subscribe calls registration.pushManager.subscribe 1`] = `
+Object {
+  "endpoint": "test.com/12345",
+  "options": Object {
+    "applicationServerKey": Uint8Array [],
+    "userVisibleOnly": true,
+  },
+}
+`;
+
+exports[`subscribe subscribe does not transforms applicationServerKey if in the right format 1`] = `
+Object {
+  "endpoint": "test.com/12345",
+  "options": Object {
+    "applicationServerKey": Uint8Array [
+      97,
+      112,
+      112,
+      108,
+      105,
+      99,
+      97,
+      116,
+      105,
+      111,
+      110,
+      83,
+      101,
+      114,
+      118,
+      101,
+      114,
+      75,
+      101,
+      121,
+    ],
+    "userVisibleOnly": true,
+  },
+}
+`;
+
+exports[`subscribe subscribe transforms applicationServerKey to urlBase64ToUint8Array if its a string 1`] = `
+Object {
+  "endpoint": "test.com/12345",
+  "options": Object {
+    "applicationServerKey": Uint8Array [
+      97,
+      112,
+      112,
+      108,
+      105,
+      99,
+      97,
+      116,
+      105,
+      111,
+      110,
+      83,
+      101,
+      114,
+      118,
+      101,
+      114,
+      75,
+      101,
+      121,
+    ],
+    "userVisibleOnly": true,
+  },
+}
+`;
+
+exports[`unsubscribe unsubscribe calls subscription.unsubscribe 1`] = `true`;

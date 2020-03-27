@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`core consistently exports 1`] = `
+"getRegistration :: function
+getRegistrations :: function
+register :: function
+getWorker :: function
+postMessage :: function
+update :: function
+unregister :: function
+escapeHatch :: function
+showNotification :: function
+getNotifications :: function
+getSubscription :: function
+subscribe :: function
+unsubscribe :: function
+registerTag :: function
+getTags :: function
+urlBase64ToUint8Array :: function"
+`;

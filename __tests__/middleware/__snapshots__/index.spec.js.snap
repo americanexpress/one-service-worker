@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`middleware consistently exports 1`] = `
+"manifest :: function
+cacheBusting :: function
+cacheRouter :: function
+cacheStrategy :: function
+precache :: function
+expiration :: function
+appShell :: function
+clientsClaim :: function
+skipWaiting :: function
+escapeHatchRoute :: function
+messageContext :: function
+messenger :: function
+navigationPreloadResponse :: function
+navigationPreloadActivation :: function
+onInstall :: function
+onActivate :: function
+onMessage :: function
+onPush :: function
+onSync :: function
+onFetch :: function"
+`;

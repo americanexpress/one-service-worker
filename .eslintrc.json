@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "extends": [
+    "amex",
+    "plugin:prettier/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "serviceworker": true
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**",
+        "**/__mocks__/**"
+      ],
+      "extends": [
+        "amex/test",
+        "plugin:prettier/recommended"
+      ]
+    },
+    {
+      "files": [
+        "**/*.md"
+      ],
+      "rules": {
+        "no-restricted-globals": 0
+      }
+    }
+  ]
+}

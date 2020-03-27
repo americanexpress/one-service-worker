@@ -1,0 +1,8 @@
+# libraries
+node_modules
+# outputs
+/test-results
+# builds
+dist
+/es
+/index.*

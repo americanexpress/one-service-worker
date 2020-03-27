@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`errors consistently exports 1`] = `
+"OneServiceWorkerError :: function
+errorFactory :: function
+notEnabled :: function
+notSupported :: function
+failedToInstall :: function
+failure :: function"
+`;

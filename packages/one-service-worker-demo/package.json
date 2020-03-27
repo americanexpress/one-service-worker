@@ -1,0 +1,53 @@
+{
+  "private": true,
+  "name": "one-service-worker-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "contributors": [
+    "Andres Escobar <Andres.Escobar@aexp.com> (https://github.com/anescobar1991)",
+    "James Singleton <James.Singleton1@aexp.com> (https://github.com/JamesSingleton)",
+    "Jimmy King  <Jimmy.King@aexp.com> (https://github.com/10xLaCroixDrinker)",
+    "Jonathan Adshead <Jonathan.Adshead@aexp.com> (https://github.com/JAdshead)",
+    "Michael Tobia <Michael.M.Tobia@aexp.com> (https://github.com/Francois-Esquire)",
+    "Michael Tomcal <Michael.A.Tomcal@aexp.com> (https://github.com/mtomcal)",
+    "Stephanie Coates  <Stephanie.Coates1@aexp.com> (https://github.com/stephaniecoates)",
+    "Nelly Kiboi <Nelly.J.Kiboi@aexp.com> (https://github.com/nellyk)",
+    "Nickolas Oliver <nickolas.oliver@aexp.com> (https://github.com/PixnBits)"
+  ],
+  "scripts": {
+    "postinstall": "npm run build",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "start": "node dist/index.js",
+    "start:watch": "nodemon --watch dist/index.js dist/index.js",
+    "dev": "npm-run-all --parallel build:watch start:watch"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "web-push": "^3.4.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^3.0.0",
+    "@rollup/plugin-buble": "^0.21.0",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@testing-library/react-hooks": "^3.2.1",
+    "amex-jest-preset": "^6.0.1",
+    "babel-jest": "^25.1.0",
+    "babel-preset-amex": "^3.3.0",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "react-test-renderer": "^16.12.0",
+    "rimraf": "^3.0.1",
+    "rollup": "^2.0.2",
+    "rollup-plugin-cleanup": "^3.1.1",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-re": "^1.0.7"
+  }
+}
