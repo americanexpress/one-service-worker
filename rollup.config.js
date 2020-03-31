@@ -186,7 +186,7 @@ export function createLibraryConfig(config = defaultConfig) {
   if (config.minify) {
     jobs.push({
       external,
-      input: 'index.esm.js',
+      input: pkg.module,
       output: {
         intro,
         file: 'index.min.js',

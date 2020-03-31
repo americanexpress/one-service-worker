@@ -21,11 +21,18 @@ jobs:
         sudo apt-get install libwoff1 libopus0 libwebp6 libwebpdemux2 libenchant1c2a libgudev-1.0-0 libsecret-1-0 libhyphen0 libgdk-pixbuf2.0-0 libegl1 libnotify4 libxslt1.1 libevent-2.1-6 libgles2 libgl1 libvpx5
         sudo apt-get install libnss3 libxss1 libasound2
         sudo apt-get install libdbus-glib-1-2 libxt6
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - uses: actions/cache@v1
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: ${{ runner.os }}-yarn-
     - name: Setup
       env:
         NODE_ENV: development
       run: yarn
-      # TODO: cache node_modules and re-use between workflows
     - name: Testing
       env:
         NODE_ENV: production

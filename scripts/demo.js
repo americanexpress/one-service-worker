@@ -21,7 +21,7 @@ const net = () => require('net');
 const fs = () => require('fs');
 
 // Our socket address
-const SOCKETFILE = '/tmp/demo-server-unix.sock';
+const SOCKETFILE = `${process.env.TEMP_DIR || '/tmp'}/demo-server-unix.sock`;
 
 const spawnCommand = (cmd, opts, sync) =>
   (sync ? childProcess().spawnSync : childProcess().spawn)(
