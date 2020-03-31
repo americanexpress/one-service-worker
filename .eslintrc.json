@@ -24,7 +24,15 @@
         "**/*.md"
       ],
       "rules": {
-        "no-restricted-globals": 0
+        "no-restricted-globals": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.{md,js}"
+      ],
+      "rules": {
+        "unicorn/prevent-abbreviations": "off"
       }
     }
   ]

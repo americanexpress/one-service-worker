@@ -64,7 +64,12 @@ a service worker script in [`jest`][jest] with no manual setup required:
 #### `/src/sw.js`
 
 ```javascript
-import { on, skipWaiting, clientsClaim, cacheStrategy } from '@americanexpress/one-service-worker';
+import {
+  on,
+  skipWaiting,
+  clientsClaim,
+  cacheStrategy,
+} from '@americanexpress/one-service-worker';
 
 on('fetch', cacheStrategy());
 on('install', skipWaiting());
@@ -86,7 +91,7 @@ describe('my service worker', () => {
   beforeAll(() => {
     jest.spyOn(self, 'skipWaiting');
     jest.spyOn(self.clients, 'claim');
-  })
+  });
 
   it('should have listeners and run lifecycle events', async () => {
     expect.assertions(5);
@@ -104,7 +109,7 @@ describe('my service worker', () => {
 
   describe('caching', () => {
     beforeAll(async () => {
-      await addAll([ '/index.js' ]);
+      await addAll(['/index.js']);
     });
 
     it('responds with correct response and does not call fetch', async () => {
@@ -138,6 +143,7 @@ demonstrates basic usage of `playwright` using `chromium`:
 const { chromium } = require('playwright');
 
 const createServer = () => {
+  // eslint-disable-next-line global-require
   const express = require('express');
 
   const app = express();
@@ -147,7 +153,7 @@ const createServer = () => {
   const server = app.listen(3000);
 
   return { app, server };
-}
+};
 
 (async function testing() {
   const { app, server } = createServer();
@@ -189,24 +195,28 @@ const createServer = () => {
       }`,
   });
 
-  const getRegistrations = () => page.evaluate(() => navigator.serviceWorker.getRegistrations());
-  const getBrowserTargets = async () => (await browser.targets()).map(t => t.type());
+  const getRegistrations = () =>
+    page.evaluate(() => navigator.serviceWorker.getRegistrations());
+  const getBrowserTargets = async () =>
+    (await browser.targets()).map(t => t.type());
 
   await page.evaluate(`(async () => await register())()`);
 
-  if (await getRegistrations().length !== 1) {
+  if ((await getRegistrations().length) !== 1) {
     throw new Error('there should be at least one registration and no more');
   }
 
   // once we have registered a worker, we can get the target and gather some insight on the service worker
 
-  if (await getBrowserTargets().includes('service_worker') === false) {
+  if ((await getBrowserTargets().includes('service_worker')) === false) {
     throw new Error('service worker is missing?');
   }
 
   //  to get a JSHandle of the worker, we can get the target and use it to access the handle
 
-  const swTarget = await browser.waitForTarget(target => target.type() === 'service_worker');
+  const swTarget = await browser.waitForTarget(
+    target => target.type() === 'service_worker',
+  );
   const worker = await browser.serviceWorker(swTarget);
   const stringifiedWorker = await worker.evaluate(() => self.toString());
 
@@ -218,7 +228,7 @@ const createServer = () => {
 
   await page.evaluate(`(async () => await unregister())()`);
 
-  if (await getRegistrations().length !== 0) {
+  if ((await getRegistrations().length) !== 0) {
     throw new Error('there should be no registrations');
   }
 

@@ -66,6 +66,7 @@ export default function useStorage({ session = false, strict = true, onStorage }
   }, [onStorage]);
 
   React.useEffect(
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     () => () => {
       if (session && strict) api.clear();
     },

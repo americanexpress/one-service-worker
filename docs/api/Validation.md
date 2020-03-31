@@ -18,9 +18,12 @@ import { validateInput } from '@americanexpress/one-service-worker';
 
 const logErrors = true;
 
-validateInput({
-  url: 39
-}, logErrors);
+validateInput(
+  {
+    url: 39,
+  },
+  logErrors,
+);
 ```
 
 **Parameters**
@@ -45,7 +48,7 @@ const cacheOptions = {
   ignoreSearch: true,
   ignoreMethod: true,
   ignoreVary: true,
-  cacheNam: 'my-cache'
+  cacheNam: 'my-cache',
 };
 ```
 

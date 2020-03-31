@@ -87,16 +87,15 @@ self.addEventListener('install', () => {
 });
 
 // optional
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   // if we have open windows/tabs, we can list out open clients and have them navigate
   // to the current url - effectively reloading the pages with the new service worker
   event.waitUntil(
-    self.clients.matchAll({ type: 'window' })
-      .then(windowClients => {
-        windowClients.forEach(windowClient => {
-          windowClient.navigate(windowClient.url);
-        });
-      })
+    self.clients.matchAll({ type: 'window' }).then(windowClients => {
+      windowClients.forEach(windowClient => {
+        windowClient.navigate(windowClient.url);
+      });
+    }),
   );
 });
 ```

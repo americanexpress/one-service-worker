@@ -259,7 +259,7 @@ on(
   [
     // camera
     event => {
-      console.log('data: ', event.data);
+      console.log('data:', event.data);
     },
     // action
     event => {

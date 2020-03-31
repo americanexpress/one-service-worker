@@ -67,12 +67,7 @@ share the same configuration between the two threads.
 ```js
 import { getConfig } from '@americanexpress/one-service-worker';
 
-const {
-  development,
-  events,
-  nonStandard,
-  navigationPreload,
-} = getConfig();
+const { development, events, nonStandard, navigationPreload } = getConfig();
 ```
 
 **Returns**
@@ -90,7 +85,7 @@ from `process.env.NODE_ENV` however it can be configured during runtime.
 import { isDevelopment, on } from '@americanexpress/one-service-worker';
 
 if (isDevelopment()) {
-  on('subscribe', (subscription) => {
+  on('subscribe', subscription => {
     console.log(subscription);
   });
 }
@@ -112,9 +107,7 @@ If disabled, calling event functionality will have no effect.
 import { isEventsEnabled, on } from '@americanexpress/one-service-worker';
 
 if (isEventsEnabled()) {
-  on('registration', [
-    () => console.log('service worker registered'),
-  ]);
+  on('registration', [() => console.log('service worker registered')]);
 }
 ```
 
@@ -131,7 +124,10 @@ The default value is `true` and can be configured during runtime.
 If disabled, calling non standard functionality will have no effect.
 
 ```js
-import { isNonStandardEnabled, registerTag } from '@americanexpress/one-service-worker';
+import {
+  isNonStandardEnabled,
+  registerTag,
+} from '@americanexpress/one-service-worker';
 
 if (isNonStandardEnabled()) {
   (async function syncTag() {
@@ -153,12 +149,14 @@ to take effect. The default value is `true` and can be configured during runtime
 If disabled, calling functionality for `navigationPreload` will have no effect.
 
 ```js
-import { isNavigationPreloadEnabled, on, navigationPreloadActivation } from '@americanexpress/one-service-worker';
+import {
+  isNavigationPreloadEnabled,
+  on,
+  navigationPreloadActivation,
+} from '@americanexpress/one-service-worker';
 
 if (isNavigationPreloadEnabled()) {
-  on('activate', [
-    navigationPreloadActivation(),
-  ]);
+  on('activate', [navigationPreloadActivation()]);
 }
 ```
 
@@ -179,19 +177,23 @@ if (isNavigationPreloadEnabled()) {
 Checks to see if the execution context is running in the service worker or not.
 
 ```js
-import { on, isServiceWorker, postMessage } from '@americanexpress/one-service-worker';
+import {
+  on,
+  isServiceWorker,
+  postMessage,
+} from '@americanexpress/one-service-worker';
 
 // same file for building symmetric messaging between both threads
 if (isServiceWorker()) {
   // service worker thread
-  on('message', (event) => {
+  on('message', event => {
     if (event.data === 'ping') {
       postMessage('pong');
     }
   });
 } else {
   // client thread
-  on('message', (event) => {
+  on('message', event => {
     if (event.data === 'pong') {
       console.log('message delivered to service worker with ack');
     }
@@ -211,7 +213,10 @@ if (isServiceWorker()) {
 Checks to see if the service worker is supported; will always be true within the service worker.
 
 ```js
-import { isServiceWorkerSupported, register } from '@americanexpress/one-service-worker';
+import {
+  isServiceWorkerSupported,
+  register,
+} from '@americanexpress/one-service-worker';
 
 if (isServiceWorkerSupported()) {
   (async function registerIfAvailable() {
@@ -231,7 +236,10 @@ if (isServiceWorkerSupported()) {
 Checks to see if `Notification`s is available.
 
 ```js
-import { isNotificationSupported, showNotification } from '@americanexpress/one-service-worker';
+import {
+  isNotificationSupported,
+  showNotification,
+} from '@americanexpress/one-service-worker';
 
 if (isNotificationSupported()) {
   (async function notifyIfAvailable() {
@@ -251,7 +259,10 @@ if (isNotificationSupported()) {
 Checks to see if `PushManager` is available.
 
 ```js
-import { isPushSupported, subscribe } from '@americanexpress/one-service-worker';
+import {
+  isPushSupported,
+  subscribe,
+} from '@americanexpress/one-service-worker';
 
 if (isPushSupported()) {
   (async function subscribeToPushIfAvailable() {
@@ -271,7 +282,10 @@ if (isPushSupported()) {
 Checks to see if `BackgroundSync` is available.
 
 ```js
-import { isBackgroundSyncSupported, registerTag } from '@americanexpress/one-service-worker';
+import {
+  isBackgroundSyncSupported,
+  registerTag,
+} from '@americanexpress/one-service-worker';
 
 if (isBackgroundSyncSupported()) {
   (async function registerTagIfAvailable() {
@@ -291,7 +305,10 @@ if (isBackgroundSyncSupported()) {
 Checks to see if `CacheStorage` is available.
 
 ```js
-import { isCacheStorageSupported, add } from '@americanexpress/one-service-worker';
+import {
+  isCacheStorageSupported,
+  add,
+} from '@americanexpress/one-service-worker';
 
 if (isCacheStorageSupported()) {
   (async function cacheDocumentIfAvailable() {
@@ -333,7 +350,10 @@ import { isPermissionsSupported } from '@americanexpress/one-service-worker';
 
 if (isPermissionsSupported()) {
   (async function checkPushPermissions() {
-    const result = await navigator.permissions.query({ name: 'push', userVisibleOnly: true });
+    const result = await navigator.permissions.query({
+      name: 'push',
+      userVisibleOnly: true,
+    });
     // do something based on the result
   })();
 }

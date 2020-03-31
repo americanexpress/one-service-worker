@@ -127,11 +127,7 @@ Binds an array of event names to a given target to the event system.
 ```js
 import { emitter } from '@americanexpress/one-service-worker';
 
-emitter([
-  'install',
-  'activate',
-  'fetch',
-], self);
+emitter(['install', 'activate', 'fetch'], self);
 ```
 
 **Parameters**
@@ -160,11 +156,17 @@ Creates a handler to be bound to event listeners.
 ```js
 import { on, createMiddleware } from '@americanexpress/one-service-worker';
 
-on('fetch', createMiddleware([
-  function middlewareFunction(event, context) {
-    event.respondWith(fetch(context.request));
-  },
-], event => ({ request: event.request.clone() })));
+on(
+  'fetch',
+  createMiddleware(
+    [
+      function middlewareFunction(event, context) {
+        event.respondWith(fetch(context.request));
+      },
+    ],
+    event => ({ request: event.request.clone() }),
+  ),
+);
 ```
 
 **Parameters**
@@ -185,19 +187,28 @@ on('fetch', createMiddleware([
 Creates a factory function that takes in a default array of middleware to be used.
 
 ```js
-import { on, createMiddlewareFactory } from '@americanexpress/one-service-worker';
+import {
+  on,
+  createMiddlewareFactory,
+} from '@americanexpress/one-service-worker';
 
-const intermediateMiddlewareFactory = createMiddlewareFactory([
-  function defaultMiddleware(event, context) {
-    console.log(context);
-  }
-], event => ({ request: event.request.clone() }));
+const intermediateMiddlewareFactory = createMiddlewareFactory(
+  [
+    function defaultMiddleware(event, context) {
+      console.log(context);
+    },
+  ],
+  event => ({ request: event.request.clone() }),
+);
 
-on('fetch', intermediateMiddlewareFactory([
-  function mainMiddlewareFunction(event, context) {
-    event.respondWith(fetch(context.request));
-  }
-]));
+on(
+  'fetch',
+  intermediateMiddlewareFactory([
+    function mainMiddlewareFunction(event, context) {
+      event.respondWith(fetch(context.request));
+    },
+  ]),
+);
 ```
 
 **Parameters**

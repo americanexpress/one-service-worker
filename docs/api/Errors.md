@@ -17,7 +17,9 @@ An error class that extends `Error` for the library.
 import { OneServiceWorkerError } from '@americanexpress/one-service-worker';
 
 const message = 'something went wrong..';
-const existingError = new Error('[native]: DOM error or native API error occurred');
+const existingError = new Error(
+  '[native]: DOM error or native API error occurred',
+);
 const errorInstance = new OneServiceWorkerError(message, existingError);
 ```
 
@@ -37,7 +39,10 @@ It can be useful to build synchronous thrown exceptions and asynchronous promise
 based on your use case.
 
 ```js
-import { OneServiceWorkerError, errorFactory } from '@americanexpress/one-service-worker';
+import {
+  OneServiceWorkerError,
+  errorFactory,
+} from '@americanexpress/one-service-worker';
 
 const exception = (function createExceptionFn() {
   let promiseMode = false;
@@ -46,7 +51,7 @@ const exception = (function createExceptionFn() {
   const exceptionFn = errorFactory(
     // the first constructs the error for a particular exception
     () => new OneServiceWorkerError('doh!'),
-    //the second decides to reject with a promise or throw the constructed error
+    // the second decides to reject with a promise or throw the constructed error
     error => {
       if (promiseMode) {
         return Promise.reject(error);

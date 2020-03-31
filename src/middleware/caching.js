@@ -35,6 +35,7 @@ export const fetchAndCache = ({ request, cacheName, waitUntil, fetchOptions }) =
 export function createCacheRouter({ cacheName, match: matcher, fetchOptions } = {}) {
   if (!isCacheWorkerSupported()) return noop;
 
+  // eslint-disable-next-line unicorn/consistent-function-scoping
   let test = () => false;
   if (typeof matcher === 'function') test = matcher;
   else if (matcher instanceof RegExp) test = ({ request: { url } }) => matcher.test(url);

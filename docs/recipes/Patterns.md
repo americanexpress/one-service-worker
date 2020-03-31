@@ -39,7 +39,7 @@ try {
       self.unregister();
       break;
   }
-} catch (e) {
+} catch (error) {
   // in the event of failure, unregister
   self.unregister();
 }
@@ -61,7 +61,11 @@ with the desired `scope` for selective removal.
 **`/client.js`**
 
 ```js
-import { register, unregister, escapeHatch } from '@americanexpress/one-service-worker';
+import {
+  register,
+  unregister,
+  escapeHatch,
+} from '@americanexpress/one-service-worker';
 
 export async function unregisterWorkers(scope) {
   if (typeof scope === 'string' && scope) await unregister(scope);
