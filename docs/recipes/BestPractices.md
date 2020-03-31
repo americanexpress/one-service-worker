@@ -29,10 +29,10 @@ which it can be installed
 in case of emergency
 - adopt progressive enhancements and guard against unsupported browser APIs across
 browser vendors and versions
-- treat service worker configuration/state as immutable; lifecycle/functional events
-do not affect the subsequent invocation and the change will not be recorded
-If you need, use persistent stores to pull configuration or settings between
-service worker termination and threads if need be
+- treat service worker configuration/state as immutable; modifying variables or anything
+in-memory between lifecycle/functional events do not persist
+- For persistence, use stores like `indexeddb` or `caches` to pull configuration or settings
+between service worker terminations and threads if need be
 
 **Caching**
 

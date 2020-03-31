@@ -9,7 +9,7 @@ While on installation, the demo will also be installed.
 However if you need to reinstall for any reason, you can run:
 
 ```bash
-npm demo:install
+npm run demo:install
 ```
 
 Then build the demo project by running:
