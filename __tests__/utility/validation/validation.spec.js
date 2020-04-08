@@ -20,12 +20,12 @@ import {
   expectedArrayOfType,
   enumerableException,
   unknownKey,
-  unknownEeventName,
+  unknownEventName,
   validateInput,
 } from '../../../src/utility/validation/validation';
 
 describe('message generators', () => {
-  [expectedType, expectedArrayOfType, enumerableException, unknownKey, unknownEeventName].forEach(
+  [expectedType, expectedArrayOfType, enumerableException, unknownKey, unknownEventName].forEach(
     msgFn => {
       test(`${msgFn.name} - returns string without arguments`, () => {
         expect.assertions(1);

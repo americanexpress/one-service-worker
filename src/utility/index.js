@@ -31,7 +31,7 @@ export {
   expectedArrayOfType,
   enumerableException,
   unknownKey,
-  unknownEeventName,
+  unknownEventName,
   validateInput,
   getCacheOptions,
 } from './validation';
@@ -52,4 +52,15 @@ export {
   isPermissionsSupported,
   isOffline,
 } from './runtime';
-export { on, once, off, emit, emitter, eventListeners, calls } from './events';
+export {
+  on,
+  once,
+  off,
+  emit,
+  emitter,
+  eventListeners,
+  calls,
+  createMiddleware,
+  createMiddlewareContext,
+  createMiddlewareFactory,
+} from './events';

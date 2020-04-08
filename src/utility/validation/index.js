@@ -21,7 +21,7 @@ export {
   expectedArrayOfType,
   enumerableException,
   unknownKey,
-  unknownEeventName,
+  unknownEventName,
   validateInput,
 } from './validation';
 export { getCacheOptions } from './options';

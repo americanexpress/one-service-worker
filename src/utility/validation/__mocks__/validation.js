@@ -26,6 +26,6 @@ export const {
   expectedArrayOfType,
   enumerableException,
   unknownKey,
-  unknownEeventName,
+  unknownEventName,
   validateInput,
 } = imports;
