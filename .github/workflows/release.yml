@@ -10,6 +10,7 @@ on:
 jobs:
   release_package:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged && github.head_ref == 'prerelease' && github.base_ref == 'master'
 
     steps:
     - uses: actions/checkout@v2
@@ -30,6 +31,10 @@ jobs:
       run: yarn
     - name: Semantic release
       env:
+        GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+        GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
+        GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+        GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
