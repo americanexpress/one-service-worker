@@ -38,7 +38,7 @@ function notificationReducer(state = {}, action) {
     case 'add-vibrate-pattern':
       return {
         ...state,
-        vibrate: state.vibrate.concat(parseInt(action.vibration, 10)),
+        vibrate: state.vibrate.concat(Number.parseInt(action.vibration, 10)),
       };
     case 'remove-vibrate-pattern':
       return {

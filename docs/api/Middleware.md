@@ -105,7 +105,7 @@ self.addEventListener(
   onFetch([
     event => {
       if (event.request.mode === 'navigate')
-        console.log('navigating to: ', event.request.url);
+        console.log('navigating to:', event.request.url);
       // let the browser handle the request
       return false;
     },
@@ -249,9 +249,7 @@ Calls [`self.skipWaiting`][worker-skip-waiting] and progresses the service worke
 ```js
 import { on, skipWaiting } from '@americanexpress/one-service-worker';
 
-on('install', [
-  skipWaiting(),
-]);
+on('install', [skipWaiting()]);
 ```
 
 **Returns**
@@ -268,9 +266,7 @@ Would be placed in the `activate` event.
 ```js
 import { on, clientsClaim } from '@americanexpress/one-service-worker';
 
-on('install', [
-  clientsClaim(),
-]);
+on('install', [clientsClaim()]);
 ```
 
 **Returns**
@@ -314,11 +310,12 @@ Enables `navigationPreload` to be used by a service worker on the `fetch` event,
 in configuration.
 
 ```js
-import { on, navigationPreloadActivation } from '@americanexpress/one-service-worker';
+import {
+  on,
+  navigationPreloadActivation,
+} from '@americanexpress/one-service-worker';
 
-on('activate', [
-  navigationPreloadActivation(),
-]);
+on('activate', [navigationPreloadActivation()]);
 ```
 
 **Returns**
@@ -333,11 +330,12 @@ Handles a `navigationPreload` response when enabled and accepts a function
 to fallback on if unavailable.
 
 ```js
-import { on, navigationPreloadResponse } from '@americanexpress/one-service-worker';
+import {
+  on,
+  navigationPreloadResponse,
+} from '@americanexpress/one-service-worker';
 
-on('fetch', [
-  navigationPreloadResponse(event => fetch(event.request.clone())),
-]);
+on('fetch', [navigationPreloadResponse(event => fetch(event.request.clone()))]);
 ```
 
 **Parameters**
@@ -361,11 +359,14 @@ when a matching request is made for the provided `route`.
 import { on, manifest } from '@americanexpress/one-service-worker';
 
 on('fetch', [
-  manifest({
-    name: 'my-app',
-    short_name: 'app',
-    start_url: '/index.html',
-  }, '/manifest.webmanifest'),
+  manifest(
+    {
+      name: 'my-app',
+      short_name: 'app',
+      start_url: '/index.html',
+    },
+    '/manifest.webmanifest',
+  ),
 ]);
 ```
 
@@ -422,7 +423,11 @@ given URL and will dispose of any items in cache if it expired.
 > The default `maxAge` used is a month.
 
 ```js
-import { on, expiration, cacheRouter } from '@americanexpress/one-service-worker';
+import {
+  on,
+  expiration,
+  cacheRouter,
+} from '@americanexpress/one-service-worker';
 
 on('fetch', [
   cacheRouter({
@@ -434,7 +439,7 @@ on('fetch', [
   // expiration intercepts that and acts on it
   expiration({
     // 30 days in milliseconds
-    maxAge: 1000 * 60 * 60 * 24 * 30
+    maxAge: 1000 * 60 * 60 * 24 * 30,
   }),
 ]);
 ```
@@ -463,7 +468,7 @@ on('fetch', [
   cacheRouter({
     match: /.js$/,
     cacheName: 'javascript',
-    fetchOptions: {}
+    fetchOptions: {},
   }),
 ]);
 ```
@@ -519,9 +524,7 @@ The middleware will override falling back to default browser handling of a reque
 ```js
 import { on, cacheStrategy } from '@americanexpress/one-service-worker';
 
-on('fetch', [
-  cacheStrategy(),
-]);
+on('fetch', [cacheStrategy()]);
 ```
 
 **Returns**
@@ -539,10 +542,7 @@ it will be available from the cache.
 import { on, precache } from '@americanexpress/one-service-worker';
 
 on('install', [
-  precache([
-    '/styles.css',
-    new Request('/index.js'),
-  ], {
+  precache(['/styles.css', new Request('/index.js')], {
     cacheName: 'assets',
   }),
 ]);

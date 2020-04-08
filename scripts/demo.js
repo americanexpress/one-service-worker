@@ -21,7 +21,7 @@ const net = () => require('net');
 const fs = () => require('fs');
 
 // Our socket address
-const SOCKETFILE = '/tmp/demo-server-unix.sock';
+const SOCKETFILE = `${process.env.TEMP_DIR || '/tmp'}/demo-server-unix.sock`;
 
 const spawnCommand = (cmd, opts, sync) =>
   (sync ? childProcess().spawnSync : childProcess().spawn)(
@@ -36,7 +36,7 @@ function spawnDemo(onListen) {
   });
   childSpawn.stdout.on('data', message => {
     const msg = message.toString();
-    if (/server is listening on [\d]{4,4}/.test(msg)) {
+    if (/server is listening on \d{4}/.test(msg)) {
       process.nextTick(onListen);
     }
   });

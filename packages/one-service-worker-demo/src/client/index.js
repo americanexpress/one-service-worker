@@ -23,6 +23,6 @@ import config from './config';
 
 configure(config);
 
-const appElement = document.getElementById('root');
+const appElement = document.querySelector('#root');
 
 ReactDOM.render(React.createElement(App), appElement);

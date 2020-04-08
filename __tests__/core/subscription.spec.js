@@ -31,7 +31,8 @@ describe('subscription', () => {
 
     test('transforms vapid public key to an array of char codes', () => {
       const sample = applicationServerKeyToBase64Array(vapidPublicKeySample);
-      expect(sample).toMatchSnapshot();
+      // jest/no-large-snapshots...
+      expect(JSON.stringify(sample)).toMatchSnapshot();
       expect(sample).toMatchObject(expect.arrayContaining([expect.any(Number)]));
     });
   });

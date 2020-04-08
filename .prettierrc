@@ -2,6 +2,7 @@
   "parser": "babel",
   "semi": true,
   "singleQuote": true,
+  "arrowParens": "avoid",
   "bracketSpacing": true,
   "trailingComma": "all",
   "useTabs": false

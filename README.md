@@ -13,10 +13,9 @@
   <img src="./one-service-worker.png" alt="one-service-worker - One Amex" width="50%" />
 </h1>
 
-[![npm](https://img.shields.io/npm/v/americanexpress/one-service-worker)](https://www.npmjs.com/package/americanexpress/one-service-worker)
-[![npm version](https://badge.fury.io/js/one-service-worker.svg)](https://badge.fury.io/js/one-service-worker)
-[![Build Status](https://travis-ci.org/americanexpress/one-service-worker.svg?branch=master)](https://travis-ci.org/americanexpress/one-service-worker)
-![npm bundle size](https://img.shields.io/bundlephobia/min/@americanexpress/one-service-worker?label=Minified&style=flat-square)
+[![npm](https://img.shields.io/npm/v/@americanexpress/one-service-worker)](https://www.npmjs.com/package/@americanexpress/one-service-worker)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@americanexpress/one-service-worker?label=minified&style=flat-square)
+![CI](https://github.com/americanexpress/one-service-worker/workflows/CI/badge.svg)
 
 One Service Worker is a minimal, light-weight, `Promise` based library that
 unifies the service worker and browser threads under one API; designed with

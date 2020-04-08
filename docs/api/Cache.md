@@ -218,8 +218,7 @@ Puts a request into the cache. Overwrites the request/response if it exists.
 import { put } from '@americanexpress/one-service-worker';
 
 export async function putInJSCache(request, response) {
-  const request = await put(request, response, { cacheName: 'javascript' });
-  return request;
+  await put(request, response, { cacheName: 'javascript' });
 }
 ```
 
@@ -513,7 +512,10 @@ URL will be returned.
 import { getMetaData } from '@americanexpress/one-service-worker';
 
 export async function getMetaForKey(key) {
-  const data = await getMetaData({ cacheName: 'my-custom-meta-cache', url: key });
+  const data = await getMetaData({
+    cacheName: 'my-custom-meta-cache',
+    url: key,
+  });
   return data;
 }
 ```
@@ -540,7 +542,11 @@ URL will be set and returned.
 import { setMetaData } from '@americanexpress/one-service-worker';
 
 export async function setMetaForKey(key, metadata) {
-  const data = await setMetaData({ cacheName: 'my-custom-meta-cache', url: key, metadata });
+  const data = await setMetaData({
+    cacheName: 'my-custom-meta-cache',
+    url: key,
+    metadata,
+  });
   return req.url;
 }
 ```
@@ -567,7 +573,10 @@ Removes the `meta-data` for the given cacheName, or of an individual record if a
 import { deleteMetaData } from '@americanexpress/one-service-worker';
 
 export async function deleteMetaForKey(key) {
-  const data = await deleteMetaData({ cacheName: 'my-custom-meta-cache', url: key });
+  const data = await deleteMetaData({
+    cacheName: 'my-custom-meta-cache',
+    url: key,
+  });
   return req.url;
 }
 ```

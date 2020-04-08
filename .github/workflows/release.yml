@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+  release_package:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged && github.head_ref == 'prerelease' && github.base_ref == 'master'
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - uses: actions/cache@v1
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: ${{ runner.os }}-yarn-
+    - name: Install package
+      env:
+        NODE_ENV: development
+      run: yarn
+    - name: Semantic release
+      env:
+        GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+        GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
+        GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+        GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        sed -i. 's/"private": true/"private": false/' package.json
+        yarn semantic-release

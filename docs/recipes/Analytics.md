@@ -232,20 +232,20 @@ register('/sw.js', {
   scope: '/',
   updateViaCache: 'none',
 })
-  .catch(e => console.error(e))
+  .catch(error => console.error(error))
   .then(() => {
     // set up our analytics interval to every 5 minutes
     setInterval(offloadAnalytics, 1000 * 60 * 5);
 
     document
-      .getElementById('analytics-offload-button')
+      .querySelector('#analytics-offload-button')
       .addEventListener('click', () => {
         offloadAnalytics();
       });
 
     if (isPushSupported()) {
       document
-        .getElementById('subscribe-button')
+        .querySelector('#subscribe-button')
         .addEventListener('click', () => {
           // after registration and once clicked, we subscribe the user
           subscribe({
@@ -272,12 +272,12 @@ register('/sw.js', {
         });
       });
 
-      document.getElementById('sync-server').addEventListener('click', () => {
-        const tag = document.getElementById('sync-select-tag').value;
+      document.querySelector('#sync-server').addEventListener('click', () => {
+        const tag = document.querySelector('#sync-select-tag').value;
         registerTag(tag)
           .catch(console.error)
           .then(syncRegistration => {
-            console.log('syncRegistration: ', syncRegistration);
+            console.log('syncRegistration:', syncRegistration);
             sendAnalytics({
               event: 'sync-tag-registration',
               data: {

@@ -17,7 +17,12 @@ For web push, our service worker can simply be:
 
 `/sw.js`
 ```js
-import { on, skipWaiting, clientsClaim, showNotification } from '@americanexpress/one-service-worker';
+import {
+  on,
+  skipWaiting,
+  clientsClaim,
+  showNotification,
+} from '@americanexpress/one-service-worker';
 
 // skips waiting for the installation to continue
 on('install', skipWaiting());
@@ -25,13 +30,10 @@ on('install', skipWaiting());
 // claims the active clients (or open tabs)
 on('activate', clientsClaim());
 
-on(
-  'push',
-  event => {
-    const { title, options } = event.data.json();
-    event.waitUntil(showNotification(title, options));
-  },
-);
+on('push', event => {
+  const { title, options } = event.data.json();
+  event.waitUntil(showNotification(title, options));
+});
 ```
 
 ### Client

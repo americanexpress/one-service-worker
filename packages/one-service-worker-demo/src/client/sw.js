@@ -44,12 +44,12 @@ self.addEventListener(
   'message',
   onMessage([
     event => {
-      console.log('sw - on message data (service worker): ', event.data);
+      console.log('sw - on message data (service worker):', event.data);
     },
     // eslint-disable-next-line consistent-return
     event => {
       if (event.data.id === 'ping') {
-        console.log('sw - correlation: ', event.data.correlation);
+        console.log('sw - correlation:', event.data.correlation);
         event.waitUntil(
           postMessage(
             {
