@@ -14,20 +14,20 @@
  * permissions and limitations under the License.
  */
 
-import { match, put, remove, defaultCacheName, cachePrefix } from './cache';
+import { match, put, remove, createCacheName, primaryCacheName } from './cache';
 
 export const metaDataCacheName = '__meta';
 
-export function createCacheName() {
-  return `${cachePrefix}/${metaDataCacheName}`;
+export function createMetaCacheName() {
+  return createCacheName(metaDataCacheName);
 }
 
-export function createCacheEntryName(cacheName = defaultCacheName) {
-  return `/${createCacheName()}/${cacheName}`;
+export function createMetaCacheEntryName(cacheName = primaryCacheName) {
+  return `/${createMetaCacheName()}/${cacheName}`;
 }
 
 export function createMetaRequest(cacheName) {
-  return new Request(createCacheEntryName(cacheName));
+  return new Request(createMetaCacheEntryName(cacheName));
 }
 
 export function createMetaResponse({ url, data = {} } = {}) {
@@ -42,11 +42,11 @@ export function createMetaResponse({ url, data = {} } = {}) {
 
 export function getMetaStore(cacheName) {
   return match(createMetaRequest(cacheName), {
-    cacheName: createCacheName(),
+    cacheName: createMetaCacheName(),
   }).then(exists => (exists ? exists.json() : Promise.resolve({})));
 }
 
-export function getMetaData({ url, cacheName = defaultCacheName } = {}) {
+export function getMetaData({ url, cacheName } = {}) {
   return getMetaStore(cacheName).then(data => {
     if (url) {
       const request = new Request(url);
@@ -79,7 +79,7 @@ export function setMetaData({ url, cacheName, metadata } = {}) {
         data: updates,
       }),
       {
-        cacheName: createCacheName(),
+        cacheName: createMetaCacheName(),
       },
     ).then(() => (key ? updates[key] : updates));
   });
@@ -99,7 +99,7 @@ export function deleteMetaData({ url, cacheName } = {}) {
 
       if (Object.keys(updates).length === 0) {
         return remove(metaRequest, {
-          cacheName: createCacheName(cacheName),
+          cacheName: createMetaCacheName(cacheName),
         });
       }
 
@@ -111,7 +111,7 @@ export function deleteMetaData({ url, cacheName } = {}) {
 
     if (cacheName) {
       return remove(metaRequest, {
-        cacheName: createCacheName(cacheName),
+        cacheName: createMetaCacheName(cacheName),
       });
     }
 

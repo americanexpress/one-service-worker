@@ -22,8 +22,10 @@ Object.keys(imported).forEach(
 
 export const {
   cachePrefix,
-  defaultCacheName,
+  cacheDelimiter,
+  primaryCacheName,
   defaultCacheOptions,
+  createCacheName,
   normalizeRequest,
   open,
   has,

@@ -15,8 +15,8 @@
  */
 
 import {
-  createCacheName,
-  createCacheEntryName,
+  createMetaCacheName,
+  createMetaCacheEntryName,
   createMetaRequest,
   createMetaResponse,
   getMetaData,
@@ -24,26 +24,26 @@ import {
   deleteMetaData,
   metaDataCacheName,
 } from '../../src/cache/meta-data';
-import { clear, defaultCacheName, cachePrefix } from '../../src/cache/cache';
+import { clear, primaryCacheName, cachePrefix, cacheDelimiter } from '../../src/cache/cache';
 
 beforeEach(async () => {
   await clear();
 });
 
-describe('createCacheName', () => {
+describe('createMetaCacheName', () => {
   test('returns the cache name to use for meta data', () => {
     expect.assertions(1);
 
-    expect(createCacheName()).toEqual(`${cachePrefix}/${metaDataCacheName}`);
+    expect(createMetaCacheName()).toEqual(`${cachePrefix}${cacheDelimiter}${metaDataCacheName}`);
   });
 });
 
-describe('createCacheEntryName', () => {
+describe('createMetaCacheEntryName', () => {
   test('returns a prefixed url based on the cache name', () => {
     expect.assertions(1);
 
-    expect(createCacheEntryName()).toEqual(
-      `/${cachePrefix}/${metaDataCacheName}/${defaultCacheName}`,
+    expect(createMetaCacheEntryName()).toEqual(
+      `/${cachePrefix}${cacheDelimiter}${metaDataCacheName}/${primaryCacheName}`,
     );
   });
 });
@@ -54,8 +54,8 @@ describe('createMetaRequest', () => {
 
     const metaRequest = createMetaRequest();
 
-    expect(metaRequest).toEqual(new Request(createCacheEntryName()));
-    expect(metaRequest.url).toMatch(createCacheEntryName());
+    expect(metaRequest).toEqual(new Request(createMetaCacheEntryName()));
+    expect(metaRequest.url).toMatch(createMetaCacheEntryName());
   });
 });
 

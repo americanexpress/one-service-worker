@@ -80,19 +80,19 @@ on('fetch', [
     route: '/index.html',
   }),
   cacheRouter({
-    matcher: event => /@americanexpress/.test(event.request.url),
+    match: event => /@americanexpress/.test(event.request.url),
   }),
   cacheRouter({
     cacheName: 'unpkg-cache',
-    matcher: event => /unpkg\.com/.test(event.request.url),
+    match: event => /unpkg\.com/.test(event.request.url),
   }),
   cacheRouter({
     cacheName: 'example-scripts-cache',
-    matcher: event => /(scripts.*\.js$)/.test(event.request.url),
+    match: event => /(scripts.*\.js$)/.test(event.request.url),
   }),
   cacheRouter({
     cacheName: 'example-static-cache',
-    matcher: event => /(static|dls).*\.(js|css|svg|png|ttf|woff)$/.test(event.request.url),
+    match: event => /(static|dls).*\.(js|css|svg|png|ttf|woff)$/.test(event.request.url),
   }),
   expiration(),
 ]);

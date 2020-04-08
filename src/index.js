@@ -87,8 +87,11 @@ export {
 } from './core';
 
 export {
-  defaultCacheName,
+  cachePrefix,
+  cacheDelimiter,
+  primaryCacheName,
   defaultCacheOptions,
+  createCacheName,
   normalizeRequest,
   open,
   has,
@@ -103,8 +106,8 @@ export {
   entries,
   clear,
   metaDataCacheName,
-  createCacheName,
-  createCacheEntryName,
+  createMetaCacheName,
+  createMetaCacheEntryName,
   createMetaRequest,
   createMetaResponse,
   getMetaStore,
