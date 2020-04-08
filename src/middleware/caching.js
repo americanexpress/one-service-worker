@@ -51,8 +51,8 @@ export function createCacheRouter({ cacheName, match: matcher, fetchOptions } = 
           cachedResponse =>
             cachedResponse ||
             fetchAndCache({
+              waitUntil: promise => event.waitUntil(promise),
               request: event.request,
-              waitUntil: event.waitUntil,
               cacheName: name,
               fetchOptions,
             }),
