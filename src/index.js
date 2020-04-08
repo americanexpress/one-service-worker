@@ -18,6 +18,8 @@ import initialize from './initialization';
 
 initialize();
 
+export { createCacheEntryName } from './deprecations';
+
 export {
   on,
   once,
