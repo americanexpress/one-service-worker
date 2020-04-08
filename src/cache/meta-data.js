@@ -14,7 +14,7 @@
  * permissions and limitations under the License.
  */
 
-import { match, put, remove, createCacheName, primaryCacheName } from './cache';
+import { match, put, remove, createCacheName, defaultCacheName } from './cache';
 
 export const metaDataCacheName = '__meta';
 
@@ -22,7 +22,7 @@ export function createMetaCacheName() {
   return createCacheName(metaDataCacheName);
 }
 
-export function createMetaCacheEntryName(cacheName = primaryCacheName) {
+export function createMetaCacheEntryName(cacheName = defaultCacheName) {
   return `/${createMetaCacheName()}/${cacheName}`;
 }
 

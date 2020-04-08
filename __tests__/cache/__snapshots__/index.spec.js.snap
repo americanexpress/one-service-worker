@@ -3,7 +3,7 @@
 exports[`cache consistently exports 1`] = `
 "cachePrefix :: string
 cacheDelimiter :: string
-primaryCacheName :: string
+defaultCacheName :: string
 defaultCacheOptions :: object
 createCacheName :: function
 normalizeRequest :: function

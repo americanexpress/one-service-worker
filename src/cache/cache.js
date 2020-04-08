@@ -18,14 +18,14 @@ import { getCacheOptions } from '../utility/validation';
 
 export const cachePrefix = '__sw';
 export const cacheDelimiter = '/';
-export const primaryCacheName = 'one-cache';
+export const defaultCacheName = 'one-cache';
 
-export function createCacheName(cacheName = primaryCacheName) {
+export function createCacheName(cacheName = defaultCacheName) {
   return [cachePrefix, cacheName].join(cacheDelimiter);
 }
 
 export const defaultCacheOptions = {
-  cacheName: createCacheName(primaryCacheName),
+  cacheName: createCacheName(defaultCacheName),
 };
 
 export function normalizeRequest(request) {

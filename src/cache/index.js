@@ -17,7 +17,7 @@
 export {
   cachePrefix,
   cacheDelimiter,
-  primaryCacheName,
+  defaultCacheName,
   defaultCacheOptions,
   createCacheName,
   normalizeRequest,

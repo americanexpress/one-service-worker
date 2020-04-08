@@ -24,7 +24,7 @@ import {
   deleteMetaData,
   metaDataCacheName,
 } from '../../src/cache/meta-data';
-import { clear, primaryCacheName, cachePrefix, cacheDelimiter } from '../../src/cache/cache';
+import { clear, defaultCacheName, cachePrefix, cacheDelimiter } from '../../src/cache/cache';
 
 beforeEach(async () => {
   await clear();
@@ -43,7 +43,7 @@ describe('createMetaCacheEntryName', () => {
     expect.assertions(1);
 
     expect(createMetaCacheEntryName()).toEqual(
-      `/${cachePrefix}${cacheDelimiter}${metaDataCacheName}/${primaryCacheName}`,
+      `/${cachePrefix}${cacheDelimiter}${metaDataCacheName}/${defaultCacheName}`,
     );
   });
 });
