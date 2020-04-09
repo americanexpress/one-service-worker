@@ -51,7 +51,7 @@ export const unknownKey = ({ key = '', keys = [] } = {}) =>
   new OneServiceWorkerError(
     `Unknown key ${key} given, expected one of:\n\t{ ${keys.join(', ')} }\n`,
   );
-export const unknownEeventName = ({ eventName = '', enabledEvents = [] } = {}) =>
+export const unknownEventName = ({ eventName = '', enabledEvents = [] } = {}) =>
   new OneServiceWorkerError(
     [
       `event name "${eventName}" is not a supported event, please select one of the following:\n`,

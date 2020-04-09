@@ -18,7 +18,18 @@ import initialize from './initialization';
 
 initialize();
 
-export { on, once, off, emit, emitter, eventListeners, calls } from './utility/events';
+export {
+  on,
+  once,
+  off,
+  emit,
+  emitter,
+  eventListeners,
+  calls,
+  createMiddleware,
+  createMiddlewareContext,
+  createMiddlewareFactory,
+} from './utility/events';
 export {
   TYPES,
   ENUMS,
@@ -26,7 +37,7 @@ export {
   expectedArrayOfType,
   enumerableException,
   unknownKey,
-  unknownEeventName,
+  unknownEventName,
   validateInput,
   getCacheOptions,
 } from './utility/validation';
