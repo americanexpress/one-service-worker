@@ -29,7 +29,6 @@ import {
   clear,
   normalizeRequest,
   createCacheName,
-  defaultCacheName,
   cacheDelimiter,
   cachePrefix,
   defaultCacheOptions,
