@@ -1,17 +1,12 @@
 name: Release
 
 on:
-  pull_request:
+  push:
     branches:
       - master
-    types:
-      - closed
-
 jobs:
   release_package:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged && github.head_ref == 'prerelease' && github.base_ref == 'master'
-
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
