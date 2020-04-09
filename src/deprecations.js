@@ -14,9 +14,26 @@
  * permissions and limitations under the License.
  */
 
-import { deprecationNotice } from './utility/validation/deprecation';
-
 import { createMetaCacheEntryName } from './cache';
 
-// eslint-disable-next-line import/prefer-default-export
+// internal functions to formalize API deprecation
+
+export function createDeprecationMessage(message = '') {
+  return [
+    '[One Service Worker]: Deprecation Notice - %s is marked for deprecation and will not be accessible in the next major release.',
+    message,
+  ]
+    .join('\n')
+    .trim();
+}
+
+export function deprecationNotice(deprecatedMember, message) {
+  // assumes any deprecated items to be functions for the time being
+  return function warnOnDeprecation(...args) {
+    // eslint-disable-next-line no-console
+    console.warn(createDeprecationMessage(message), deprecatedMember.name);
+    return deprecatedMember(...args);
+  };
+}
+
 export const createCacheEntryName = deprecationNotice(createMetaCacheEntryName);
