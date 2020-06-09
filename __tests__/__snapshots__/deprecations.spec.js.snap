@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`deprecations consistently exports API items to be deprecated by next major release 1`] = `"createCacheEntryName :: function"`;

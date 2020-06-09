@@ -26,6 +26,14 @@ export function createMetaCacheEntryName(cacheName = defaultCacheName) {
   return `/${createMetaCacheName()}/${cacheName}`;
 }
 
+export function createCacheEntryName(cacheName) {
+  console.warn(
+    '[One Service Worker]: Deprecation Notice - %s is marked for deprecation and will not be accessible in the next major release.',
+    'createCacheEntryName',
+  );
+  return createMetaCacheEntryName(cacheName);
+}
+
 export function createMetaRequest(cacheName) {
   return new Request(createMetaCacheEntryName(cacheName));
 }

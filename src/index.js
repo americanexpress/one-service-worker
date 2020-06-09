@@ -18,8 +18,6 @@ import initialize from './initialization';
 
 initialize();
 
-export { createCacheEntryName } from './deprecations';
-
 export {
   on,
   once,
@@ -116,6 +114,7 @@ export {
   getMetaData,
   setMetaData,
   deleteMetaData,
+  createCacheEntryName,
 } from './cache';
 
 export {

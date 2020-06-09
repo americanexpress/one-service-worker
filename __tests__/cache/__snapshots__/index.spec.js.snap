@@ -27,5 +27,6 @@ createMetaResponse :: function
 getMetaStore :: function
 getMetaData :: function
 setMetaData :: function
-deleteMetaData :: function"
+deleteMetaData :: function
+createCacheEntryName :: function"
 `;

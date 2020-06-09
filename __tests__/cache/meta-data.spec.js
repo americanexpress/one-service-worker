@@ -23,11 +23,25 @@ import {
   setMetaData,
   deleteMetaData,
   metaDataCacheName,
+  createCacheEntryName,
 } from '../../src/cache/meta-data';
 import { clear, defaultCacheName, cachePrefix, cacheDelimiter } from '../../src/cache/cache';
 
 beforeEach(async () => {
   await clear();
+});
+
+describe('createCacheEntryName - deprecated', () => {
+  beforeAll(() => {
+    jest.spyOn(console, 'warn');
+    console.warn.mockImplementation();
+  });
+
+  test('warns about the deprecation', () => {
+    const cacheName = 'my-cache';
+    expect(createCacheEntryName(cacheName)).toEqual(createMetaCacheEntryName(cacheName));
+    expect(console.warn).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe('createMetaCacheName', () => {

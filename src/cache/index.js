@@ -44,4 +44,5 @@ export {
   getMetaData,
   setMetaData,
   deleteMetaData,
+  createCacheEntryName,
 } from './meta-data';
