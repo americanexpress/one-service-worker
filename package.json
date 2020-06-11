@@ -1,6 +1,6 @@
 {
   "name": "@americanexpress/one-service-worker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A service worker built for the modern web",
   "license": "Apache-2.0",
   "homepage": "https://github.com/americanexpress/one-service-worker",
@@ -114,8 +114,9 @@
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
+      "@semantic-release/npm",
       "@semantic-release/git",
-      "@semantic-release/npm"
+      "@semantic-release/github"
     ],
     "branch": "master"
   },

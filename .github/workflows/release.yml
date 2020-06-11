@@ -1,19 +1,16 @@
 name: Release
 
 on:
-  pull_request:
+  push:
     branches:
       - master
-    types:
-      - closed
-
 jobs:
   release_package:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged && github.head_ref == 'prerelease' && github.base_ref == 'master'
-
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
@@ -35,7 +32,7 @@ jobs:
         GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
         GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
         GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         sed -i. 's/"private": true/"private": false/' package.json
