@@ -20,6 +20,6 @@ import { printExports } from './helpers';
 describe('library', () => {
   test('consistently exports', () => {
     expect.assertions(1);
-    expect(printExports(library, true)).toMatchSnapshot();
+    expect(printExports(library)).toMatchSnapshot();
   });
 });

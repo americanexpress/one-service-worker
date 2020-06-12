@@ -28,7 +28,10 @@ import {
   removeAll,
   clear,
   normalizeRequest,
-  defaultCacheName,
+  createCacheName,
+  cacheDelimiter,
+  cachePrefix,
+  defaultCacheOptions,
 } from '../../src/cache/cache';
 
 const cacheName = 'my-cache';
@@ -61,7 +64,7 @@ describe('playground', () => {
     // would match
     await expect(match(html)).resolves.toEqual(expect.any(Response));
     // would not match different cache name
-    await expect(match(html, { cacheName: 'one-cache' })).resolves.toBe(null);
+    await expect(match(html, { cacheName: createCacheName() })).resolves.toBe(null);
     // matches the newly added response with cache specified
     await expect(match(html, { cacheName })).resolves.toEqual(expect.any(Response));
     // returns only the single html we added
@@ -113,6 +116,25 @@ describe('playground', () => {
   });
 });
 
+describe('createCacheName', () => {
+  test('returns a string from a given cacheName', async () => {
+    expect.assertions(1);
+
+    const myCacheName = 'my-cache';
+    expect(createCacheName(myCacheName)).toEqual(
+      [cachePrefix, cacheDelimiter, myCacheName].join(''),
+    );
+  });
+});
+
+describe('normalizeRequest', () => {
+  test('returns a request with the string url passed in', async () => {
+    expect.assertions(1);
+
+    expect(normalizeRequest('/index.js')).toEqual(new Request('/index.js'));
+  });
+});
+
 describe('open', () => {
   test('open defaults to new cache with the default name', async () => {
     expect.assertions(3);
@@ -144,7 +166,7 @@ describe('has', () => {
 });
 
 describe('keys', () => {
-  test('retturns all the keys in the cache', async () => {
+  test('returns all the keys in the cache', async () => {
     expect.assertions(3);
 
     await expect(keys()).resolves.toHaveLength(0);
@@ -165,7 +187,9 @@ describe('entries', () => {
 
     await addAll(['/index.js', '/analytics.js']);
 
-    await expect(entries()).resolves.toEqual([[await keys(), await open(), defaultCacheName]]);
+    await expect(entries()).resolves.toEqual([
+      [await keys(), await open(), defaultCacheOptions.cacheName],
+    ]);
   });
 
   test('can select which caches is returned', async () => {
@@ -184,7 +208,7 @@ describe('entries', () => {
       [[], await open(randomCacheName), randomCacheName],
     ]);
     await expect(entries()).resolves.toEqual([
-      [await keys(), await open(), defaultCacheName],
+      [await keys(), await open(), defaultCacheOptions.cacheName],
       [[], await open(randomCacheName), randomCacheName],
     ]);
   });

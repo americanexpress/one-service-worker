@@ -16,8 +16,8 @@
 
 import createExpirationMiddleware from '../../src/middleware/expiration';
 import {
+  createMetaCacheName,
   createMetaRequest,
-  createCacheName,
   getMetaData,
   setMetaData,
   deleteMetaData,
@@ -92,7 +92,7 @@ describe('createExpirationMiddleware', () => {
     await waitFor(event.waitUntil);
     await expect(
       match(createMetaRequest(), {
-        cacheName: createCacheName(),
+        cacheName: createMetaCacheName(),
       }),
     ).resolves.toBeInstanceOf(Response);
     await expect(
@@ -116,7 +116,7 @@ describe('createExpirationMiddleware', () => {
     await waitFor(event.waitUntil);
     await expect(
       match(createMetaRequest(), {
-        cacheName: createCacheName(),
+        cacheName: createMetaCacheName(),
       }),
     ).resolves.toBeInstanceOf(Response);
     await expect(
@@ -162,7 +162,7 @@ describe('createExpirationMiddleware', () => {
     await waitFor(event.waitUntil);
     await expect(
       match(createMetaRequest(), {
-        cacheName: createCacheName(),
+        cacheName: createMetaCacheName(),
       }),
     ).resolves.toBeInstanceOf(Response);
     await expect(

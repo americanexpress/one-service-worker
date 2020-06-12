@@ -15,35 +15,49 @@
  */
 
 import {
-  createCacheName,
-  createCacheEntryName,
+  createMetaCacheName,
+  createMetaCacheEntryName,
   createMetaRequest,
   createMetaResponse,
   getMetaData,
   setMetaData,
   deleteMetaData,
   metaDataCacheName,
+  createCacheEntryName,
 } from '../../src/cache/meta-data';
-import { clear, defaultCacheName, cachePrefix } from '../../src/cache/cache';
+import { clear, defaultCacheName, cachePrefix, cacheDelimiter } from '../../src/cache/cache';
 
 beforeEach(async () => {
   await clear();
 });
 
-describe('createCacheName', () => {
-  test('returns the cache name to use for meta data', () => {
-    expect.assertions(1);
+describe('createCacheEntryName - deprecated', () => {
+  beforeAll(() => {
+    jest.spyOn(console, 'warn');
+    console.warn.mockImplementation();
+  });
 
-    expect(createCacheName()).toEqual(`${cachePrefix}/${metaDataCacheName}`);
+  test('warns about the deprecation', () => {
+    const cacheName = 'my-cache';
+    expect(createCacheEntryName(cacheName)).toEqual(createMetaCacheEntryName(cacheName));
+    expect(console.warn).toHaveBeenCalledTimes(1);
   });
 });
 
-describe('createCacheEntryName', () => {
+describe('createMetaCacheName', () => {
+  test('returns the cache name to use for meta data', () => {
+    expect.assertions(1);
+
+    expect(createMetaCacheName()).toEqual(`${cachePrefix}${cacheDelimiter}${metaDataCacheName}`);
+  });
+});
+
+describe('createMetaCacheEntryName', () => {
   test('returns a prefixed url based on the cache name', () => {
     expect.assertions(1);
 
-    expect(createCacheEntryName()).toEqual(
-      `/${cachePrefix}/${metaDataCacheName}/${defaultCacheName}`,
+    expect(createMetaCacheEntryName()).toEqual(
+      `/${cachePrefix}${cacheDelimiter}${metaDataCacheName}/${defaultCacheName}`,
     );
   });
 });
@@ -54,8 +68,8 @@ describe('createMetaRequest', () => {
 
     const metaRequest = createMetaRequest();
 
-    expect(metaRequest).toEqual(new Request(createCacheEntryName()));
-    expect(metaRequest.url).toMatch(createCacheEntryName());
+    expect(metaRequest).toEqual(new Request(createMetaCacheEntryName()));
+    expect(metaRequest.url).toMatch(createMetaCacheEntryName());
   });
 });
 
