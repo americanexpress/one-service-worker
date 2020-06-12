@@ -22,8 +22,8 @@ Object.keys(imported).forEach(
 
 export const {
   metaDataCacheName,
-  createCacheName,
-  createCacheEntryName,
+  createMetaCacheName,
+  createMetaCacheEntryName,
   createMetaRequest,
   createMetaResponse,
   getMetaStore,

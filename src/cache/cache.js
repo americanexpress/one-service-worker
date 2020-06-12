@@ -17,9 +17,15 @@
 import { getCacheOptions } from '../utility/validation';
 
 export const cachePrefix = '__sw';
+export const cacheDelimiter = '/';
 export const defaultCacheName = 'one-cache';
+
+export function createCacheName(cacheName = defaultCacheName) {
+  return [cachePrefix, cacheName].join(cacheDelimiter);
+}
+
 export const defaultCacheOptions = {
-  cacheName: defaultCacheName,
+  cacheName: createCacheName(defaultCacheName),
 };
 
 export function normalizeRequest(request) {
@@ -27,11 +33,11 @@ export function normalizeRequest(request) {
   return request instanceof Request ? request : new Request(request);
 }
 
-export function open(cacheName = defaultCacheName) {
+export function open(cacheName = defaultCacheOptions.cacheName) {
   return caches.open(cacheName);
 }
 
-export function has(cacheName = defaultCacheName) {
+export function has(cacheName = defaultCacheOptions.cacheName) {
   return caches.has(cacheName);
 }
 
