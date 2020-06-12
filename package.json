@@ -1,6 +1,6 @@
 {
   "name": "@americanexpress/one-service-worker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A service worker built for the modern web",
   "license": "Apache-2.0",
   "homepage": "https://github.com/americanexpress/one-service-worker",
@@ -40,7 +40,7 @@
     "index.min.js.gz",
     "jest.environment.js"
   ],
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
