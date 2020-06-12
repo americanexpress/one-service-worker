@@ -15,8 +15,11 @@
  */
 
 export {
+  cachePrefix,
+  cacheDelimiter,
   defaultCacheName,
   defaultCacheOptions,
+  createCacheName,
   normalizeRequest,
   open,
   has,
@@ -33,12 +36,13 @@ export {
 } from './cache';
 export {
   metaDataCacheName,
-  createCacheName,
-  createCacheEntryName,
+  createMetaCacheName,
+  createMetaCacheEntryName,
   createMetaRequest,
   createMetaResponse,
   getMetaStore,
   getMetaData,
   setMetaData,
   deleteMetaData,
+  createCacheEntryName,
 } from './meta-data';
