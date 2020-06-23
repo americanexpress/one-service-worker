@@ -57,7 +57,7 @@ export function createServiceWorkerLifecycleTest(platform) {
       const registerBtn = await page.$(registerServiceWorkerSelector);
       await registerBtn.click();
 
-      await sleep(500);
+      await sleep(1000);
 
       await expect(
         page.evaluate(() =>

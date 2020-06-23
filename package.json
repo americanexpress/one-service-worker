@@ -1,6 +1,6 @@
 {
   "name": "@americanexpress/one-service-worker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A service worker built for the modern web",
   "license": "Apache-2.0",
   "homepage": "https://github.com/americanexpress/one-service-worker",
@@ -40,18 +40,15 @@
     "index.min.js.gz",
     "jest.environment.js"
   ],
-  "private": false,
-  "workspaces": [
-    "packages/*"
-  ],
   "sideEffects": false,
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "browser": "index.min.js",
   "scripts": {
-    "test": "jest --config jest.config.js",
+    "test": "cross-env NODE_ENV=production jest --config jest.config.js",
+    "pretest": "npm run build && (cd packages/one-service-worker-demo && yarn)",
     "posttest": "npm run test:integration && npm run lint",
-    "test:integration": "jest --config jest.integration.config.js || (npm run demo:test-down && exit 1)",
+    "test:integration": "cross-env NODE_ENV=production jest --config jest.integration.config.js || (npm run demo:test-down && exit 1)",
     "pretest:integration": "npm run demo:test-up",
     "posttest:integration": "npm run demo:test-down",
     "lint:commits": "commitlint --from origin/master --to HEAD",

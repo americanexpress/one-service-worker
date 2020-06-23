@@ -14,7 +14,7 @@
  * permissions and limitations under the License.
  */
 
-import { match, normalizeRequest, put, createCacheName } from '../cache';
+import { match, normalizeRequest, put } from '../cache';
 import { isServiceWorker, isOffline } from '../utility/runtime';
 
 import { isNavigateRequest, isResponseSuccessful, noop } from './utility';
@@ -26,7 +26,11 @@ export default function createAppShell({ route = '/index.html', cacheName = 'off
     return function appShell(event) {
       if (isOffline()) {
         if (isNavigateRequest(event.request)) {
-          event.respondWith(match(request));
+          event.respondWith(
+            match(request.clone(), {
+              cacheName,
+            }),
+          );
           return true;
         }
       } else if (event.request.url === request.url) {
@@ -35,7 +39,7 @@ export default function createAppShell({ route = '/index.html', cacheName = 'off
             if (isResponseSuccessful(response)) {
               event.waitUntil(
                 put(request.clone(), response.clone(), {
-                  cacheName: createCacheName(cacheName),
+                  cacheName,
                 }),
               );
             }
