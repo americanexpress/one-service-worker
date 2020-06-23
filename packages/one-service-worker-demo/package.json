@@ -26,7 +26,6 @@
     "dev": "npm-run-all --parallel build:watch start:watch"
   },
   "dependencies": {
-    "@rollup/plugin-node-resolve": "^8.0.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "prop-types": "^15.7.2",
@@ -37,7 +36,7 @@
   "devDependencies": {
     "@rollup/plugin-alias": "^3.0.0",
     "@rollup/plugin-buble": "^0.21.0",
-    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.1",
     "babel-preset-amex": "^3.3.0",
     "nodemon": "^2.0.2",
     "rimraf": "^3.0.1",

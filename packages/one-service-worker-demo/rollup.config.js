@@ -87,18 +87,6 @@ const { server, worker, client } = {
       copy({
         targets: [
           {
-            src: 'Dockerfile',
-            dest: targetPath,
-          },
-          {
-            src: 'package.json',
-            dest: targetPath,
-          },
-          {
-            src: 'package-lock.json',
-            dest: targetPath,
-          },
-          {
             src: 'static/index.html',
             dest: `${targetPath}/public`,
           },
