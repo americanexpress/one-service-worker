@@ -16,7 +16,7 @@
 
 import resolve from '@rollup/plugin-node-resolve';
 import buble from '@rollup/plugin-buble';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import cleanup from 'rollup-plugin-cleanup';
 import replace from 'rollup-plugin-re';
 import { uglify } from 'rollup-plugin-uglify';
