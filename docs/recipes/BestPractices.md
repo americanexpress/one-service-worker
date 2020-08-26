@@ -1,10 +1,11 @@
 [clear-site-data-header]: https://w3c.github.io/webappsec-clear-site-data/#example-killswitch
 
 # Best Practices
-
+<!--ONE-DOCS-HIDE start-->
 [👈 Go to `README`](../../README.md)
 
 [👆 Back to `Recipes`](./README.md)
+<!--ONE-DOCS-HIDE end-->
 
 ## 📖 Table of Contents
 
