@@ -10,10 +10,11 @@
 [fake-indexeddb]: https://github.com/dumbmatter/fakeIndexedDB
 
 # Testing
-
+<!--ONE-DOCS-HIDE start-->
 [👈 Go to `README`](../../README.md)
 
 [👆 Back to `Recipes`](./README.md)
+<!--ONE-DOCS-HIDE end-->
 
 ## 📖 Table of Contents
 

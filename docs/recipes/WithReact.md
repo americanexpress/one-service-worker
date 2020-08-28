@@ -1,8 +1,9 @@
 # React usage
-
+<!--ONE-DOCS-HIDE start-->
 [👈 Go to `README`](../../README.md)
 
 [👆 Back to `Recipes`](./README.md)
+<!--ONE-DOCS-HIDE end-->
 
 It can be beneficial to register a service worker as early as possible during app start.
 In this example, we use a functional component to register a service worker and set
