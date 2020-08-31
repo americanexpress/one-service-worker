@@ -1,6 +1,7 @@
 # One Service Worker Demo
-
+<!--ONE-DOCS-HIDE start-->
 [👈 Go to `README`](../README.md)
+<!--ONE-DOCS-HIDE end-->
 
 For convenience, we have a demo project to run for exploring the service worker
 and the library. We've bound a few `npm` scripts that can be run to manage the demo.

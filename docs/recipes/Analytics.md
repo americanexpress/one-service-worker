@@ -1,8 +1,9 @@
 # Analytics
-
+<!--ONE-DOCS-HIDE start-->
 [👈 Go to `README`](../../README.md)
 
 [👆 Back to `Recipes`](./README.md)
+<!--ONE-DOCS-HIDE end-->
 
 ### Overview
 

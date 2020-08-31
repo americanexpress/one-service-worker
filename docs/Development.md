@@ -1,6 +1,8 @@
 # Developing with the library
 
+<!--ONE-DOCS-HIDE start-->
 [👈 Go to `README`](../README.md)
+<!--ONE-DOCS-HIDE end-->
 
 For those developing in this library, there are several tools to create a richer
 DX for users and better explanation of failures during library usage.
