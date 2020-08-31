@@ -1,10 +1,11 @@
 [web-push-nodejs]: https://github.com/web-push-libs/web-push
 
 # Web Push
-
+<!--ONE-DOCS-HIDE start-->
 [👈 Go to `README`](../../README.md)
 
 [👆 Back to `Recipes`](./README.md)
+<!--ONE-DOCS-HIDE end-->
 
 **Before starting, take note of the script names**
 - `/sw.js` will be the service worker script
