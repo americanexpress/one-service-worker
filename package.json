@@ -51,7 +51,7 @@
     "test:integration": "cross-env NODE_ENV=production jest --config jest.integration.config.js || (npm run demo:test-down && exit 1)",
     "pretest:integration": "npm run demo:test-up",
     "posttest:integration": "npm run demo:test-down",
-    "lint:commits": "commitlint --from origin/master --to HEAD",
+    "lint:commits": "commitlint --from origin/main --to HEAD",
     "lint:lockfile": "lockfile-lint --path yarn.lock --allowed-hosts registry.yarnpkg.com --validate-https",
     "lint:eslint": "eslint . --ext js,jsx,md,snap",
     "lint": "npm run lint:eslint && npm run lint:lockfile && npm run lint:commits",
@@ -115,7 +115,20 @@
       "@semantic-release/git",
       "@semantic-release/github"
     ],
-    "branch": "master"
+    "branches": [
+      "+([0-9])?(.{+([0-9]),x}).x",
+      "main",
+      "next",
+      "next-major",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ]
   },
   "husky": {
     "hooks": {
