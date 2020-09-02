@@ -1,6 +1,6 @@
 {
   "name": "@americanexpress/one-service-worker",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A service worker built for the modern web",
   "license": "Apache-2.0",
   "homepage": "https://github.com/americanexpress/one-service-worker",
