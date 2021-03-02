@@ -2,7 +2,7 @@
 <!--ONE-DOCS-HIDE start-->
 [👈 Go to `README`](../../README.md)
 
-[👆 Back to `Recipes`](./README.md)
+[👆 Back to `Guides`](./README.md)
 <!--ONE-DOCS-HIDE end-->
 
 It can be beneficial to register a service worker as early as possible during app start.

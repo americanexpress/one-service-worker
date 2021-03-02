@@ -2,7 +2,7 @@
 [👈 Return to README](../../README.md)
 <!--ONE-DOCS-HIDE end-->
 
-# 👩‍🍳 Recipes
+# 👩‍🍳 Guides
 
 * [Analytics](./Analytics.md)
 * [Basics](./Basics.md)
@@ -13,4 +13,4 @@
 * [With React](./WithReact.md)
 * [Testing A Service Worker](./Testing.md)
 
-[☝️ Return To Top](#-recipes)
+[☝️ Return To Top](#-guides)
