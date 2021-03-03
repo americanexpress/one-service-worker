@@ -5,7 +5,7 @@
 <!--ONE-DOCS-HIDE start-->
 [👈 Go to `README`](../../README.md)
 
-[👆 Back to `Recipes`](./README.md)
+[👆 Back to `Guides`](./README.md)
 <!--ONE-DOCS-HIDE end-->
 
 With the [`caches` CacheStorage][cache-storage-api] and [`cache` Cache][cache-api], we can create and manage

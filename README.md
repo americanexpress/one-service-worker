@@ -6,8 +6,8 @@
 [code-of-conduct-doc]: ./CODE_OF_CONDUCT.md
 
 [api-doc]: ./docs/api/README.md
-[recipes-doc]: ./docs/recipes/README.md
-[best-practices-doc]: ./docs/recipes/BestPractices.md
+[guides-doc]: ./docs/guides/README.md
+[best-practices-doc]: ./docs/guides/BestPractices.md
 
 <h1 align="center">
   <img src="./one-service-worker.png" alt="one-service-worker - One Amex" width="50%" />
@@ -51,12 +51,12 @@ Want to get paid for your contributions to `@americanexpress/one-service-worker`
 
 ## 📚 Documentation
 
-### **Recipes**
+### **Guides**
 
-We have an assortment of recipes and guides to help out with use cases
+We have an assortment of guides to help out with use cases
 and usage patterns we recommend with the library:
 
-[**👉 Check out the various recipes and guides 👈**][recipes-doc]
+[**👉 Check out the various  guides 👈**][guides-doc]
 
 ### **API**
 
