@@ -260,9 +260,7 @@ describe('add', () => {
   test('add does accept empty arguments', async () => {
     expect.assertions(1);
 
-    await expect(add()).rejects.toMatchObject({
-      message: 'Invalid URL: /',
-    });
+    await expect(add()).rejects.toThrowErrorMatchingInlineSnapshot(`"Invalid URL: /"`);
   });
 
   test('add accepts a request, returns void and response expected in cache', async () => {
