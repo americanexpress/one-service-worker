@@ -30,7 +30,7 @@ export default function createExpirationMiddleware({ maxAge = ONE_MONTH_IN_SECON
 
     if (request && request instanceof Request) {
       const { url } = event.request;
-      const now = new Date().getTime();
+      const now = Date.now();
       const expired = now - maxAge;
 
       event.waitUntil(
