@@ -10,20 +10,20 @@ jobs:
         node-version: [16.x, 18.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
       # Create a main branch for commitlint
       # https://github.com/conventional-changelog/commitlint/issues/6
     - run: git remote set-branches origin main && git fetch
-    - uses: actions/setup-node@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install required packages
       # add required dependencies for webkit, chromium and firefox (playwright)
       run: |
         sudo apt-get update
-        sudo apt-get install libwoff1 libopus0 libwebp6 libwebpdemux2 libenchant1c2a libgudev-1.0-0 libsecret-1-0 libhyphen0 libgdk-pixbuf2.0-0 libegl1 libnotify4 libxslt1.1 libevent-2.1-6 libgles2 libgl1 libvpx5
-        sudo apt-get install libnss3 libxss1 libasound2
-        sudo apt-get install libdbus-glib-1-2 libxt6
+        npx --yes playwright install-deps
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
