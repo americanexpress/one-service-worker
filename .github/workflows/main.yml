@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   main:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x, 18.x]
@@ -14,7 +14,7 @@ jobs:
       # Create a main branch for commitlint
       # https://github.com/conventional-changelog/commitlint/issues/6
     - run: git remote set-branches origin main && git fetch
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install required packages
