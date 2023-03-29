@@ -32,6 +32,8 @@ jest.mock('../../src/cache/cache');
 jest.mock('../../src/cache/meta-data');
 jest.mock('../../src/utility/runtime/environment');
 
+jest.spyOn(Date, 'now');
+
 beforeAll(() => {
   isCacheStorageSupported.mockImplementation(() => true);
   isServiceWorker.mockImplementation(() => true);
@@ -105,6 +107,7 @@ describe('createExpirationMiddleware', () => {
   });
 
   test('updates metadata expiration for the request', async () => {
+    Date.now.mockReturnValueOnce(1680124877877).mockReturnValueOnce(1680124958411);
     expect.assertions(7);
 
     const handler = createExpirationMiddleware();

@@ -86,10 +86,7 @@ export function createServiceWorkerLifecycleTest(platform) {
       );
 
       if (platform === 'chromium') {
-        const targets = (await browser.targets()).map(t => t.type());
-        expect(targets.includes('service_worker')).toBe(true);
-        const swTarget = await browser.waitForTarget(target => target.type() === 'service_worker');
-        const worker = await browser.serviceWorker(swTarget);
+        const [worker] = await context.serviceWorkers();
         // eslint-disable-next-line no-restricted-globals
         expect(await worker.evaluate(() => self.toString())).toBe(
           '[object ServiceWorkerGlobalScope]',

@@ -13,7 +13,7 @@ jobs:
     - run: git remote set-branches origin main && git fetch
     - uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: ['16.x', '18.x']
     - name: Install required packages
       # add required dependencies for webkit, chromium and firefox (playwright)
       run: |
