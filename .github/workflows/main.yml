@@ -5,6 +5,9 @@ on: [push, pull_request]
 jobs:
   main:
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -13,7 +16,7 @@ jobs:
     - run: git remote set-branches origin main && git fetch
     - uses: actions/setup-node@v1
       with:
-        node-version: ['16.x', '18.x']
+        node-version: ${{ matrix.node-version }}
     - name: Install required packages
       # add required dependencies for webkit, chromium and firefox (playwright)
       run: |
