@@ -26,7 +26,7 @@
     "dev": "npm-run-all --parallel build:watch start:watch"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.3",
     "express": "^4.19.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
