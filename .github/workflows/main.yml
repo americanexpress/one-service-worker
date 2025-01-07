@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [18.x, 20.x, 22.x]
 
     steps:
     - name: Checkout
@@ -37,6 +37,7 @@ jobs:
       run: |
         yarn install --frozen-lockfile
         (cd packages/one-service-worker-demo && yarn install --frozen-lockfile)
+        npx playwright install-deps
     - name: Testing
       env:
         TEMP_DIR: ${{ runner.temp }}
