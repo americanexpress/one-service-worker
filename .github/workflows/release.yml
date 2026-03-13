@@ -6,6 +6,11 @@ on:
       - main
 jobs:
   release_package:
+    permissions:
+      id-token: write # Required for trusted publisher publishing
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -13,7 +18,7 @@ jobs:
         persist-credentials: false
     - uses: actions/setup-node@v1
       with:
-        node-version: '18.x'
+        node-version: 24
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
@@ -33,5 +38,4 @@ jobs:
         GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
         GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
         GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: yarn semantic-release
