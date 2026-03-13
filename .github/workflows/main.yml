@@ -35,7 +35,7 @@ jobs:
       env:
         NODE_ENV: development
       run: |
-        yarn install --frozen-lockfile
+        yarn install --frozen-lockfile --ignore-engines
         (cd packages/one-service-worker-demo && yarn install --frozen-lockfile)
     - name: Testing
       env:
