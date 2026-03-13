@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [18.x]
 
     steps:
     - name: Checkout
@@ -27,7 +27,7 @@ jobs:
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -35,7 +35,7 @@ jobs:
       env:
         NODE_ENV: development
       run: |
-        yarn install --frozen-lockfile
+        yarn install --frozen-lockfile --ignore-engines
         (cd packages/one-service-worker-demo && yarn install --frozen-lockfile)
     - name: Testing
       env:
